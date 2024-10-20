@@ -13,7 +13,7 @@ interface Inputprops {
 const InputField: React.FC<Inputprops> = ({ input, setInput, activeTasks, setActiveTasks }) => {
 
   const addTask = () => {
-    if(input === '' || ' ' ) {
+    if(input.trim() === '') {
       return
     }
 
