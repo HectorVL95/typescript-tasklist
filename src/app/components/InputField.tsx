@@ -13,6 +13,10 @@ interface Inputprops {
 const InputField: React.FC<Inputprops> = ({ input, setInput, activeTasks, setActiveTasks }) => {
 
   const addTask = () => {
+    if(input === '' || ' ' ) {
+      return
+    }
+
     const newTask: Task = {
       id: Date.now().toString(),
       name: input
