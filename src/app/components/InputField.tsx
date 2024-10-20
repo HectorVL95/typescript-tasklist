@@ -1,6 +1,5 @@
 'use client'
 
-import { useState, FC } from "react";
 import React from "react";
 import { Task } from "../models/Task";
 
@@ -19,8 +18,8 @@ const InputField: React.FC<Inputprops> = ({ input, setInput, activeTasks, setAct
       name: input
     }
 
-    setActiveTasks([...activeTasks, newTask])
-    setInput('')
+    setActiveTasks([...activeTasks, newTask]);
+    setInput('');
   }
 
   return (

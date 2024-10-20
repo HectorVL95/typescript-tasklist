@@ -1,11 +1,12 @@
-import { Dispatch, FC, useState } from "react";
+'use client'
+
 import React from "react";
+import { useState } from "react";
 import { Task } from "../models/Task";
 import { MdCheckBox, MdDelete, MdEdit, MdSave} from "react-icons/md";
 
 interface Taskprops {
   activeTasks: Array<Task>,
-  Task: Task;
   setActiveTasks: React.Dispatch<React.SetStateAction<Task[]>>,
   completedTasks: Array<Task>,
   setCompletedTasks: React.Dispatch<React.SetStateAction<Task[]>>
@@ -13,8 +14,8 @@ interface Taskprops {
 
 const TasksField: React.FC<Taskprops> = ({ activeTasks, setActiveTasks, completedTasks, setCompletedTasks }) => {
 
-  const [edit, setEdit] = useState<string | null >(null)
-  const [editInput, setEditInput] = useState<string>('')
+  const [edit, setEdit] = useState<string | null >(null);
+  const [editInput, setEditInput] = useState<string>('');
 
   const handleEditClick = (taskId: string, curentTaskName: string) => {
     setEdit(taskId)
@@ -23,32 +24,31 @@ const TasksField: React.FC<Taskprops> = ({ activeTasks, setActiveTasks, complete
 
   const editTask = (e: React.FormEvent, id: string) => {
     e.preventDefault();
-
     const updatedTasks = activeTasks.map(task => task.id === id ? {...task, name: editInput} : task);
     setActiveTasks(updatedTasks);
-    setEdit(null)
+    setEdit(null);
   }
 
   const deleteTask = (id: string) => {
-   const updatedTasks = activeTasks.filter(task => task.id !== id)
+   const updatedTasks = activeTasks.filter(task => task.id !== id);
    setActiveTasks(updatedTasks);
-   setEdit(null)
+   setEdit(null);
   }
 
   const completeTask = (id: string) => {
-    const desiredTask = activeTasks.find(task => task.id === id)
+    const desiredTask = activeTasks.find(task => task.id === id);
 
     if(desiredTask) {
-      setCompletedTasks([...completedTasks, desiredTask])
+      setCompletedTasks([...completedTasks, desiredTask]);
     }
 
-    const updatedActivetask = activeTasks.filter(task => task.id !== id)
-    setActiveTasks(updatedActivetask)
+    const updatedActivetask = activeTasks.filter(task => task.id !== id);
+    setActiveTasks(updatedActivetask);
   }
 
   const deleteCompletedTask = (id: string) => {
-    const deleteTask = activeTasks.filter(task => task.id !== id)
-    setCompletedTasks(deleteTask)
+    const deleteTask = completedTasks.filter(task => task.id !== id);
+    setCompletedTasks(deleteTask);
   }
 
   return (

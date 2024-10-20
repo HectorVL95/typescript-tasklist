@@ -1,15 +1,14 @@
 'use client'
 
 import { useState } from "react";
+import { Task } from "./models/Task";
 import InputField from "./components/InputField";
 import TasksField from "./components/TasksField";
-import { Task } from "./models/Task";
-
 
 export default function Home () {
   const [input, setInput] = useState<string>('')
-  const [activeTasks, setActiveTasks] = useState<Array<Task>>([])
-  const [completedTasks, setCompletedTasks] = useState<Array<Task>>([])
+  const [activeTasks, setActiveTasks] = useState<Array<Task>>([]);
+  const [completedTasks, setCompletedTasks] = useState<Array<Task>>([]);
 
   return (
     <div className="flex flex-col justify-center items-center gap-8 p-8 max-w-3xl">
