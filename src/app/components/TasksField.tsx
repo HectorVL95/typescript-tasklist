@@ -52,12 +52,12 @@ const TasksField: React.FC<Taskprops> = ({ activeTasks, setActiveTasks, complete
   }
 
   return (
-  <section className="flex gap-4 w-full">
-    <div className="bg-active w-full pl-4 py-4">
+  <section className="flex gap-4 w-full h-full">
+    <div className="bg-active w-1/2 pl-4 py-4 h-fit">
       <h3 className="text-white">Active Tasks</h3>
       {
         activeTasks.map(({name, id}) => 
-        <div key={id} className="flex gap-4">
+        <div key={id} className="flex gap-4 ">
           {edit === id ? 
           <>
             <input value={editInput} onChange={(e) => setEditInput(e.target.value)}/>
@@ -75,7 +75,7 @@ const TasksField: React.FC<Taskprops> = ({ activeTasks, setActiveTasks, complete
         </div>)
       }
     </div>
-    <div className="bg-completed w-full p-4">
+    <div className="bg-completed w-1/2 p-4 h-fit">
       <h3 className="text-white">Completed Tasks</h3>
       {
         completedTasks.map(({name, id}) => 
